@@ -1,19 +1,22 @@
-export default function DetailsPage() {
-  const details = [
-    { id: 1, info: "Detail 1" },
-    { id: 2, info: "Detail 2" },
-    { id: 3, info: "Detail 3" },
-  ];
+
+import Link from "next/link";
+
+export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-zinc-50 p-10 ">
-      <h1 className="text-gray-600 font-semibold text-3xl">
-        Welcome to the Details page
-      </h1>
-      <div>
-        {details.map((detail) => (
-          <div key={detail.id}>{detail.info}</div>
-        ))}
-      </div>
-    </div>
+    <main>
+      <h1>CPRG 306: Web Development 2 - Assignments</h1>
+
+      <ul>
+        <li>
+          <Link href="/week-2">Week 2 Assignment</Link>
+        </li>
+      </ul>
+
+      <p>
+        This site contains all weekly assignments for CPRG 306.
+      </p>
+    </main>
   );
 }
+
+
