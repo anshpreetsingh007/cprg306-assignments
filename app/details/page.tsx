@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> c40cb1374c8343929f437291af3c57de9c5a6f91
 export default function DetailsPage() {
   const details = [
     { id: 1, info: "Detail 1" },
