@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SAIT Class B Demo",
-  description: "Demonstration of Next.js and all its features",
+  title: "Shopping List",
+  description: "CPRG 306 Shopping List",
 };
 
 export default function RootLayout({

@@ -1,26 +1,23 @@
-import Image from "next/image";
-import Header from "../components/header";
-import Calculate, { calculateSomething } from "@/components/calculate";
+import Link from "next/link";
 
 export default function Home() {
-  const results = calculateSomething();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-red-50 font-sans dark:bg-black w-full">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-start px-16 bg-white dark:bg-black sm:items-start">
-        <Header />
-        <div className="py-12">
-          <Image
-            className="dark:invert rounded-2xl shadow-lg border border-red-500"
-            src="/teddy_bear.jpg"
-            alt="Next.js logo"
-            width={200}
-            height={200}
-            priority
-          />
-          <Calculate />
-          <div>{results.sum}</div>
-        </div>
-      </main>
-    </div>
+    <main className="p-6">
+      <h1 className="text-2xl font-bold mb-4">CPRG 306 Assignments</h1>
+
+      <ul className="list-disc pl-6 space-y-2">
+        <li>
+          <Link href="/week-2" className="text-blue-600 hover:underline">
+            Week 2
+          </Link>
+        </li>
+
+        <li>
+          <Link href="/week-3" className="text-blue-600 hover:underline">
+            Week 3
+          </Link>
+        </li>
+      </ul>
+    </main>
   );
 }
