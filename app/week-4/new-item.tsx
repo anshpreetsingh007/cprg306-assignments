@@ -3,38 +3,34 @@
 import { useState } from "react";
 
 export default function NewItem() {
-  // State variables for form fields
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
-  
-  // Validation state
   const [nameTouched, setNameTouched] = useState(false);
 
-  // Form submission handler
-  const handleSubmit = (e: React.FormEvent) => {
+  const isNameValid = name.trim().length >= 2;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validation check
-    if (!name || name.length < 2) {
+    if (!isNameValid) {
       alert("Please enter a valid name (at least 2 characters)");
       return;
     }
 
-    // Create item object
     const item = {
-      name,
+      name: name.trim(),
       quantity,
       category,
     };
 
-    // Log to console
     console.log(item);
 
-    // Display alert
-    alert(`Item Added!\nName: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
+    alert(
+      `Item Added!\nName: ${item.name}\nQuantity: ${item.quantity}\nCategory: ${item.category}`
+    );
 
-    // Reset form fields
+    // Reset form
     setName("");
     setQuantity(1);
     setCategory("produce");
@@ -47,13 +43,16 @@ export default function NewItem() {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md space-y-6"
       >
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 text-center">
           Add New Item
         </h2>
 
-        {/* Name Field */}
+        {/* Item Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Item Name
           </label>
           <input
@@ -62,41 +61,47 @@ export default function NewItem() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             onBlur={() => setNameTouched(true)}
-            required
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition ${
-              name === "" && nameTouched
+              !isNameValid && nameTouched
                 ? "border-red-500"
                 : "border-gray-300"
             }`}
             placeholder="Enter item name"
           />
-          {name === "" && nameTouched && (
+          {!isNameValid && nameTouched && (
             <p className="text-red-500 text-sm mt-1">
-              Item name is required
+              Item name must be at least 2 characters
             </p>
           )}
         </div>
 
-        {/* Quantity Field */}
+        {/* Quantity */}
         <div>
-          <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="quantity"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Quantity
           </label>
           <input
             type="number"
             id="quantity"
-            min="1"
-            max="99"
+            min={0}
+            max={99}
             value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
-            required
+            onChange={(e) =>
+              setQuantity(Math.max(0, Number(e.target.value) || 0))
+            }
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
           />
         </div>
 
-        {/* Category Field */}
+        {/* Category */}
         <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="category"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Category
           </label>
           <select
@@ -109,9 +114,9 @@ export default function NewItem() {
             <option value="dairy">Dairy</option>
             <option value="bakery">Bakery</option>
             <option value="meat">Meat</option>
-            <option value="frozen foods">Frozen Foods</option>
-            <option value="canned goods">Canned Goods</option>
-            <option value="dry goods">Dry Goods</option>
+            <option value="frozen_foods">Frozen Foods</option>
+            <option value="canned_goods">Canned Goods</option>
+            <option value="dry_goods">Dry Goods</option>
             <option value="beverages">Beverages</option>
             <option value="snacks">Snacks</option>
             <option value="household">Household</option>
@@ -119,10 +124,10 @@ export default function NewItem() {
           </select>
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <button
           type="submit"
-          disabled={name === "" || name.length < 2}
+          disabled={!isNameValid}
           className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
           Add Item
