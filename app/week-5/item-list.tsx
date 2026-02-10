@@ -18,10 +18,9 @@ export default function ItemList() {
   const items: ItemType[] = [...(itemsData as ItemType[])];
 
   const buttonClass = (mode: SortMode) =>
-    `rounded-lg px-3 py-2 text-sm font-semibold border transition
+   `rounded-lg min-w-[160px] px-3 py-2 text-sm font-semibold border transition
      ${sortBy === mode ? "bg-gray-900 text-white border-gray-900" : "bg-white text-gray-900 hover:bg-gray-50"}`;
 
-  // GROUPED VIEW
   if (sortBy === "grouped") {
     const grouped = items.reduce<Record<string, ItemType[]>>((acc, item) => {
       const cat = item.category;
@@ -83,7 +82,6 @@ export default function ItemList() {
     );
   }
 
-  // NORMAL SORT VIEW
   items.sort((a, b) => {
     if (sortBy === "name") return a.name.localeCompare(b.name);
     return a.category.localeCompare(b.category);
