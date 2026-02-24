@@ -51,7 +51,7 @@ export default function NewItem() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-gray-900 mb-2"
           >
             Item Name
           </label>
