@@ -19,7 +19,7 @@ const item3 = {
 };
 
 const item4 = {
-  name: "bananas 🍌",
+  name: "banana 🍌",
   quantity: 6,
   category: "produce",
 };
