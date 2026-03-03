@@ -28,7 +28,6 @@ export default function NewItem({ onAddItem }: NewItemProps) {
 
     onAddItem(item);
 
-  
     setName("");
     setNameTouched(false);
     setQuantity(1);
@@ -71,7 +70,6 @@ export default function NewItem({ onAddItem }: NewItemProps) {
           )}
         </div>
 
-       
         <div className="space-y-1">
           <label className="text-sm font-medium text-gray-700">
             Quantity
@@ -91,7 +89,7 @@ export default function NewItem({ onAddItem }: NewItemProps) {
         </div>
       </div>
 
-    
+     
       <div className="space-y-1">
         <label className="text-sm font-medium text-gray-700">
           Category
@@ -119,7 +117,7 @@ export default function NewItem({ onAddItem }: NewItemProps) {
         </select>
       </div>
 
-      
+    
       <button
         className="w-full rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white
                    hover:bg-gray-800 active:bg-gray-900 transition"

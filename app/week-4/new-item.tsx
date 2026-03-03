@@ -30,7 +30,7 @@ export default function NewItem() {
       `Item Added!\nName: ${item.name}\nQuantity: ${item.quantity}\nCategory: ${item.category}`
     );
 
-    // Reset form
+   
     setName("");
     setQuantity(1);
     setCategory("produce");
